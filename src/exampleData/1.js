@@ -5,12 +5,12 @@ export default {
     root: true,
     children: [
       {
-        topic: 'What is Minde Elixir',
+        topic: '$$3^4+x^5=10$$',
         id: 'bd4313fbac40284b',
         direction: 0,
         expanded: true,
         children: [
-          { topic: 'A mind map core', id: 'beeb823afd6d2114' },
+          { topic: '$$3^4+x^5=10$$', id: 'beeb823afd6d2114' },
           { topic: 'Free', id: 'c1f068377de9f3a0' },
           { topic: 'Open-Source', id: 'c1f06d38a09f23ca' },
           {
