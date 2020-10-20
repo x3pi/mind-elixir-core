@@ -27,6 +27,8 @@ export let selectNode = function (targetElement, isNewNode) {
     console.log(targetElement.nodeObj)
     var list = document.getElementById('cm-show')
     list.innerHTML = targetElement.nodeObj.show;
+    var list2 = document.getElementById('area1')
+    if(list2) list2.value = targetElement.nodeObj.show ;
     this.bus.fire('selectNode', targetElement.nodeObj)
     MathJax.typeset()
   }

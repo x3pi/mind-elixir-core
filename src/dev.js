@@ -15,6 +15,7 @@ let mind = new MindElixir({
   contextMenuOption: {
     focus: true,
     link: true,
+    editor: false,
     /*
     extend: [
       {

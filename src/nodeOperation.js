@@ -208,6 +208,61 @@ export let addChild = function (el, node) {
     obj: newNodeObj,
   })
 }
+
+
+
+export let saveShow = function (el, node) {
+  console.time('saveShow')
+  let nodeEle = el || this.currentNode
+  if (!nodeEle) return
+  let nodeObj = nodeEle.nodeObj
+  if (nodeObj.expanded === false) {
+    this.expandNode(nodeEle, true)
+    // dom reset thus
+    nodeEle = E(nodeObj.id)
+  }
+  var tshow = document.getElementById("area1").value;
+  console.log(tshow)
+
+  nodeObj.show = tshow;
+  console.log(nodeObj.show)
+  /*
+  let newNodeObj = node || generateNewObj()
+  nodeObj.expanded = true
+  if (nodeObj.children) nodeObj.children.push(newNodeObj)
+  else nodeObj.children = [newNodeObj]
+  addParentLink(this.nodeData)
+  let top = nodeEle.parentElement
+
+  let { grp, top: newTop } = createGroup(newNodeObj)
+
+  if (top.tagName === 'T') {
+    if (top.children[1]) {
+      top.nextSibling.appendChild(grp)
+    } else {
+      let c = $d.createElement('children')
+      c.appendChild(grp)
+      top.appendChild(createExpander(true))
+      top.parentElement.insertBefore(c, top.nextSibling)
+    }
+    this.linkDiv(grp.offsetParent)
+  } else if (top.tagName === 'ROOT') {
+    this.processPrimaryNode(grp, newNodeObj)
+    top.nextSibling.appendChild(grp)
+    this.linkDiv()
+  }*/
+  //if (!node) {
+  //  this.createInputDiv(newTop.children[0])
+ // }
+ // this.selectNode(newTop.children[0], true)
+  //newTop.scrollIntoViewIfNeeded()
+  console.timeEnd('saveShow')
+  /*
+  this.bus.fire('operation', {
+    name: 'saveShow',
+    obj: newNodeObj,
+  })*/
+}
 // uncertain link disappear sometimes??
 // TODO while direction = SIDE, move up won't change the direction of primary node
 

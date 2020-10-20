@@ -29,6 +29,7 @@ import {
   insertSibling,
   insertBefore,
   addChild,
+  saveShow,
   moveNode,
   removeNode,
   moveUpNode,
@@ -146,7 +147,7 @@ function MindElixir({
       return
     }
     if (
-      ['moveNode', 'removeNode', 'addChild', 'finishEdit'].includes(
+      ['moveNode', 'removeNode', 'addChild', 'finishEdit', ].includes(
         operation.name
       )
     ) {
@@ -206,6 +207,14 @@ MindElixir.prototype = {
       (await this.before.addChild.apply(this, args))
     ) {
       addChild.apply(this, args)
+    }
+  },
+  saveShow: async function (...args) {
+    if (
+      !this.before.saveShow ||
+      (await this.before.saveShow.apply(this, args))
+    ) {
+      saveShow.apply(this, args)
     }
   },
   moveNode: async function (...args) {
