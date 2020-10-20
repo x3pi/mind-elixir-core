@@ -43,11 +43,15 @@ export default function (mind) {
         mind.toCenter()
     }
     zo.onclick = () => {
+
+        console.log(mind.scaleVal)
+
         if (mind.scaleVal < 0.6) return
         mind.scale(mind.scaleVal -= .2)
         // percentage.innerHTML = Math.round(scale * 100) + '%'
     }
     zi.onclick = () => {
+        console.log(mind.scaleVal)
         if (mind.scaleVal > 1.6) return
         mind.scale(mind.scaleVal += .2)
         // percentage.innerHTML = Math.round(scale * 100) + '%'

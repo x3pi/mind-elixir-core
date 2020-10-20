@@ -8,7 +8,7 @@ export default function (mind, option) {
     return li
   }
   let locale = i18n[mind.locale] ? mind.locale : 'en'
-
+/*
   let add_child = createLi('cm-add_child', i18n[locale].addChild, 'tab')
   let add_sibling = createLi('cm-add_sibling', i18n[locale].addSibling, 'enter')
   let remove_child = createLi(
@@ -21,12 +21,18 @@ export default function (mind, option) {
   let up = createLi('cm-up', i18n[locale].moveUp, 'PgUp')
   let down = createLi('cm-down', i18n[locale].moveDown, 'Pgdn')
   let link = createLi('cm-down', i18n[locale].link, '')
+*/
+  let en = createLi('cm-show', mind.nodeData.show, '')
+
 
   let menuUl = document.createElement('ul')
+
   menuUl.className = 'menu-list'
+  /*
   menuUl.appendChild(add_child)
   menuUl.appendChild(add_sibling)
   menuUl.appendChild(remove_child)
+
   if (!option || option.focus) {
     menuUl.appendChild(focus)
     menuUl.appendChild(unfocus)
@@ -36,6 +42,9 @@ export default function (mind, option) {
   if (!option || option.link) {
     menuUl.appendChild(link)
   }
+  */
+  menuUl.appendChild(en)
+
   if (option && option.extend) {
     for (let i = 0; i < option.extend.length; i++) {
       let item = option.extend[i]
@@ -49,8 +58,10 @@ export default function (mind, option) {
   let menuContainer = document.createElement('cmenu')
   menuContainer.appendChild(menuUl)
   menuContainer.hidden = true
+  console.log('-----------right -----------')
 
   mind.container.append(menuContainer)
+
   mind.container.oncontextmenu = function (e) {
     e.preventDefault()
     // console.log(e.pageY, e.screenY, e.clientY)
@@ -79,6 +90,7 @@ export default function (mind, option) {
   mind.container.onclick = e => {
     menuContainer.hidden = true
   }
+  /*
   add_child.onclick = e => {
     mind.addChild()
   }
@@ -89,9 +101,14 @@ export default function (mind, option) {
     mind.removeNode()
   }
   focus.onclick = e => {
+    console.log('---------------')
+    console.log(mind.nodeData.show)
     mind.focusNode(mind.currentNode)
+
   }
   unfocus.onclick = e => {
+    console.log('----------11-----')
+    console.log(mind.nodeData)
     mind.cancelFocus()
   }
   up.onclick = e => {
@@ -119,6 +136,6 @@ export default function (mind, option) {
         once: true,
       }
     )
-  }
+  }*/
 }
 

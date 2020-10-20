@@ -136,7 +136,7 @@ function MindElixir({
   this.currentLink = null // the selected link svg element
   this.inputDiv = null // editor
   this.bus = new Bus()
-  this.scaleVal = 1
+  this.scaleVal = 0.7;
   this.tempDir = null
 
   this.isUndo = false
@@ -337,6 +337,7 @@ MindElixir.prototype = {
     this.linkDiv()
 
     initMouseEvent(this)
+    this.scale(this.scaleVal)
   },
 }
 // MindElixir.exportSvg = exportSvg

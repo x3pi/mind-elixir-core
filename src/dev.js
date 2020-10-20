@@ -15,14 +15,15 @@ let mind = new MindElixir({
   contextMenuOption: {
     focus: true,
     link: true,
+    /*
     extend: [
       {
-        name: 'Node edit',
+        name: MindElixir,
         onclick: () => {
           alert('extend menu')
         },
       },
-    ],
+    ],*/
   },
   toolBar: true,
   nodeMenu: false,

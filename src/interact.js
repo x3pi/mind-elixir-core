@@ -11,6 +11,7 @@ import { findEle } from './utils/dom'
  * @param {TargetElement} el - Target element return by E('...'), default value: currentTarget.
  */
 export let selectNode = function (targetElement, isNewNode) {
+  console.log(targetElement);
   if (!targetElement) return
   console.time('selectNode')
   if (typeof targetElement === 'string') {
@@ -22,11 +23,18 @@ export let selectNode = function (targetElement, isNewNode) {
   if (isNewNode) {
     this.bus.fire('selectNewNode', targetElement.nodeObj)
   } else {
+    console.log('targetElement.nodeObj')
+    console.log(targetElement.nodeObj)
+    var list = document.getElementById('cm-show')
+    list.innerHTML = targetElement.nodeObj.show;
     this.bus.fire('selectNode', targetElement.nodeObj)
+    MathJax.typeset()
   }
   console.timeEnd('selectNode')
+  console.log('---------tttt--')
 }
 export let unselectNode = function () {
+  console.log('unselect')
   if (this.currentNode) {
     this.currentNode.className = ''
   }

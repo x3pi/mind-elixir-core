@@ -42,6 +42,11 @@ export default {
             ],
           },
         ],
+        show: `$ax^2 + bx + c = 0$
+        <h1>and they are</h1><b>
+        hello</b><br/>
+        XIn chao 
+        <img class="fit-picture" src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg">`
       },
       {
         topic: 'Basics',
@@ -208,6 +213,7 @@ export default {
       },
     ],
     expanded: true,
+    show: "When \(a \ne 0\), $ax^2 + bx + c = 0$ there are two solutions to $$ax^2 + bx + c = 0$$ and they are \\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\\]"
   },
   linkData: {},
 }
