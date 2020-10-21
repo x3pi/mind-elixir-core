@@ -20,7 +20,10 @@ export default function (mind, option) {
 
   if (!option || option.editor) {
     let edit_show = createLi('cm-edit-show', '<textarea id="area1" rows="5" cols="50" >' + mind.nodeData.show + '</textarea>', '')
+
     let save_show = createLi('cm-save-show', 'Save show', '')
+    let hidden_menu = createLi('cm-hidden-menu', 'Exit show', '')
+
 
     let add_child = createLi('cm-add_child', i18n[locale].addChild, 'tab')
     let add_sibling = createLi('cm-add_sibling', i18n[locale].addSibling, 'enter')
@@ -36,6 +39,8 @@ export default function (mind, option) {
     let link = createLi('cm-down', i18n[locale].link, '')
     menuUl.appendChild(edit_show)
     menuUl.appendChild(save_show)
+    menuUl.appendChild(hidden_menu)
+
 
 
     menuUl.appendChild(add_child)
@@ -51,12 +56,13 @@ export default function (mind, option) {
     if (!option || option.link) {
       menuUl.appendChild(link)
     }
-
     save_show.onclick = e => {
       mind.saveShow();
       menuContainer.hidden = true
-      console.log('----save')
-      console.log(mind);
+  
+    }
+    hidden_menu.onclick = e => {
+      menuContainer.hidden = true
     }
 
     add_child.onclick = e => {
