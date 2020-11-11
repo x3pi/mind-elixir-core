@@ -74,14 +74,23 @@ export function selectText(div) {
 }
 
 export function createInputDiv(tpc) {
-  console.time('createInputDiv')
+  console.log(this.contextMenuOption.editor)
+
+  console.log('createInputDiv')
+  if(this.contextMenuOption.editor){
   if (!tpc) return
+  console.log(tpc.nodeObj)
   let div = $d.createElement('div')
-  let origin = tpc.childNodes[0].textContent
+  let origin = tpc.nodeObj.topic
+  console.log(origin)
+
   tpc.appendChild(div)
-  div.innerHTML = origin
+  //div.innerHTML = origin
+  //div.insertAdjacentHTML( 'beforeend', origin )
+  div.textContent = origin
   div.contentEditable = true
-  div.spellcheck = false
+  //div.contenteditable = true
+ // div.spellcheck = false
   div.style.cssText = `min-width:${tpc.offsetWidth - 8}px;`
   if (this.direction === LEFT) div.style.right = 0
   div.focus()
@@ -95,6 +104,7 @@ export function createInputDiv(tpc) {
   })
 
   div.addEventListener('keydown', e => {
+    
     let key = e.keyCode
     if (key === 8) {
       // 不停止冒泡冒到document就把节点删了
@@ -108,7 +118,10 @@ export function createInputDiv(tpc) {
   div.addEventListener('blur', () => {
     if (!div) return // 防止重复blur
     let node = tpc.nodeObj
-    let topic = div.textContent.trim()
+   // let topic = div.textContent.trim()
+    let topic = div.textContent
+    console.log(topic)
+
     if (topic === '') node.topic = origin
     else node.topic = topic
     div.remove()
@@ -119,10 +132,13 @@ export function createInputDiv(tpc) {
       origin,
     })
     if (topic === origin) return // 没有修改不做处理
-    tpc.childNodes[0].textContent = node.topic
+    //tpc.childNodes[0].textContent = node.topic
+    //tpc.insertAdjacentHTML( 'beforebegin', node.topic );
+    tpc.innerHTML = node.topic
     this.linkDiv()
   })
   console.timeEnd('createInputDiv')
+  }
 }
 
 export let createExpander = function (expanded) {
